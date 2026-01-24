@@ -24,6 +24,7 @@ export const Home = () => {
           speed={0.5}
           scanlineFrequency={0}
           warpAmount={0}
+          resolutionScale={0.25}
         />
       </div>
 

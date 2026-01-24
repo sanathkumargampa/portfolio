@@ -46,55 +46,55 @@ export const AboutSection = () => {
           </div>
 
           {/* Educational Journey */}
-          <div className="lg:col-span-7 space-y-6">
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
+          <div className="lg:col-span-7 space-y-4 md:space-y-6">
+            <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3">
               <span className="w-8 h-1 bg-primary rounded-full" />
               Educational Journey
             </h3>
 
             {/* Card 1 */}
-            <div className="glass-card p-6 rounded-2xl flex items-start gap-6 group hover:border-primary/30 transition-colors">
-              <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+            <div className="glass-card p-5 md:p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-4 md:gap-6 group hover:border-primary/30 transition-colors">
+              <div className="p-3 md:p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
                 <Briefcase size={24} />
               </div>
-              <div>
-                <h4 className="text-xl font-bold text-white mb-1">Bachelor of Technology in AIML</h4>
-                <p className="text-primary/80 font-medium mb-2">CMR Institute of Technology</p>
-                <div className="flex items-center gap-4 text-sm text-gray-400">
+              <div className="flex-1 min-w-0">
+                <h4 className="text-lg md:text-xl font-bold text-white mb-1 break-words">Bachelor of Technology in AIML</h4>
+                <p className="text-primary/80 font-medium mb-2 text-sm md:text-base">CMR Institute of Technology</p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm text-gray-400">
                   <span>2022 – 2026</span>
-                  <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                  <span className="hidden sm:inline w-1 h-1 bg-gray-600 rounded-full" />
                   <span>CGPA: 8.04</span>
                 </div>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="glass-card p-6 rounded-2xl flex items-start gap-6 group hover:border-primary/30 transition-colors">
-              <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+            <div className="glass-card p-5 md:p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-4 md:gap-6 group hover:border-primary/30 transition-colors">
+              <div className="p-3 md:p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
                 <GraduationCap size={24} />
               </div>
-              <div>
-                <h4 className="text-xl font-bold text-white mb-1">Intermediate</h4>
-                <p className="text-primary/80 font-medium mb-2">Sri Chaitanya Jr Kalashala</p>
-                <div className="flex items-center gap-4 text-sm text-gray-400">
+              <div className="flex-1 min-w-0">
+                <h4 className="text-lg md:text-xl font-bold text-white mb-1 break-words">Intermediate</h4>
+                <p className="text-primary/80 font-medium mb-2 text-sm md:text-base">Sri Chaitanya Jr Kalashala</p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm text-gray-400">
                   <span>2020 – 2022</span>
-                  <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                  <span className="hidden sm:inline w-1 h-1 bg-gray-600 rounded-full" />
                   <span>91%</span>
                 </div>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="glass-card p-6 rounded-2xl flex items-start gap-6 group hover:border-primary/30 transition-colors">
-              <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+            <div className="glass-card p-5 md:p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-4 md:gap-6 group hover:border-primary/30 transition-colors">
+              <div className="p-3 md:p-4 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
                 <Book size={24} />
               </div>
-              <div>
-                <h4 className="text-xl font-bold text-white mb-1">Secondary School Certificate</h4>
-                <p className="text-primary/80 font-medium mb-2">Sri Chaitanya Techno School</p>
-                <div className="flex items-center gap-4 text-sm text-gray-400">
+              <div className="flex-1 min-w-0">
+                <h4 className="text-lg md:text-xl font-bold text-white mb-1 break-words">Secondary School Certificate</h4>
+                <p className="text-primary/80 font-medium mb-2 text-sm md:text-base">Sri Chaitanya Techno School</p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs md:text-sm text-gray-400">
                   <span>2019 – 2020</span>
-                  <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                  <span className="hidden sm:inline w-1 h-1 bg-gray-600 rounded-full" />
                   <span>GPA: 10</span>
                 </div>
               </div>

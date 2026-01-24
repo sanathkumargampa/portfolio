@@ -15,14 +15,14 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8 pt-12 md:pt-0"
           >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-4 md:mb-6 leading-tight">
               Hi, I'm <span className="text-primary text-glow inline-block">Sanath</span>{" "}
               <span className="bg-clip-text text-transparent bg-linear-to-r from-white to-gray-400">Gampa</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
               Passionate about creating <span className="text-white font-medium">intelligent solutions</span> through machine learning and
               artificial intelligence. Specialized in developing innovative applications
               that solve real-world problems.
@@ -32,18 +32,18 @@ export const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full"
+              className="pt-4 md:pt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full"
             >
               <a
                 href="#projects"
-                className="cosmic-button w-full sm:w-auto flex items-center justify-center gap-2 group"
+                className="cosmic-button w-full sm:w-auto flex items-center justify-center gap-2 group py-3 md:py-3.5 text-base"
               >
                 View My Work
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
               <a
                 href="#contact"
-                className="px-8 py-3.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white font-medium transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto flex items-center justify-center gap-2"
+                className="px-8 py-3 md:py-3.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-white font-medium transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto flex items-center justify-center gap-2 text-base"
               >
                 <span>Contact Me</span>
                 <Mail size={18} />

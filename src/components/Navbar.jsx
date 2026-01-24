@@ -72,12 +72,12 @@ export const Navbar = () => {
     <>
       <nav
         className={cn(
-          "fixed left-1/2 top-6 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out",
+          "fixed left-1/2 top-4 md:top-6 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out",
           "rounded-full border border-white/10 shadow-lg backdrop-blur-md",
           "bg-black/20 hover:bg-black/40 hover:border-white/20",
           shouldShrink
-            ? "w-[60%] md:w-[40%] py-2"
-            : "w-[85%] md:w-[60%] py-3"
+            ? "w-[92%] md:w-[40%] py-2"
+            : "w-[92%] md:w-[60%] py-3"
         )}
       >
         <div className="flex items-center justify-between px-6">
