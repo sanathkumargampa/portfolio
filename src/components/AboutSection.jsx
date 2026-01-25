@@ -36,7 +36,7 @@ export const AboutSection = () => {
               </a>
               <a
                 target="_blank"
-                href="https://drive.google.com/file/d/1sJqLvItqyxO5SMblx7E1j5f2YeynqAAv/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1jAXElISPWuLVM-vvi0djsAev_YoeLF9t/view?usp=sharing"
                 className="px-8 py-3 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto text-center"
                 rel="noopener noreferrer"
               >
@@ -48,7 +48,7 @@ export const AboutSection = () => {
           {/* Educational Journey */}
           <div className="lg:col-span-7 space-y-4 md:space-y-6">
             <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3">
-              <span className="w-8 h-1 bg-primary rounded-full" />
+
               Educational Journey
             </h3>
 
