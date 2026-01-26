@@ -18,7 +18,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "FAKE PROFILE IDENTIFICATION",
+    title: "Fake Profile Identification",
     description:
       "Developed an ANN-based model to detect fake profiles using behavioral and identity patterns, automating fraud prevention on digital platforms.",
     image:
@@ -29,13 +29,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "AUDIO SUMMARIZATION SYSTEM",
+    title: "Audio Summarization System",
     description:
       "An AI tool that transcribes and summarizes audio into concise, downloadable text for easy meeting documentation.",
     image:
       "https://i.postimg.cc/5tbFCrt5/Whats-App-Image-2025-07-02-at-17-15-19-b092b26a.jpg",
     tags: ["React", "TailwindCSS", "Whisper"],
-    demoUrl: "#",
+    demoUrl: "https://audio-summarization-system.vercel.app/",
     githubUrl:
       "https://github.com/sanathkumargampa/AUDIO-SUMMARIZATION-SYSTEM",
   },
@@ -69,42 +69,87 @@ export const ProjectsSection = ({ autoplay = false }) => {
           Recent work crafted with attention to detail and performance.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           {/* Project Visuals using Glass Card */}
-          <div className="relative h-[400px] w-full glass-card rounded-2xl p-4 overflow-hidden group">
-            <AnimatePresence mode='wait'>
-              {projects.map((project, index) => (
-                isActive(index) && (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-4 rounded-xl overflow-hidden shadow-2xl"
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60" />
-                  </motion.div>
-                )
-              ))}
-            </AnimatePresence>
+          {/* Project Visuals using Glass Card */}
+          <div className="relative group/nav">
+            {/* Desktop Navigation - Left */}
+            <button
+              onClick={handlePrev}
+              className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 border border-white/10 items-center justify-center text-white/50 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 opacity-0 group-hover/nav:opacity-100 focus-visible:opacity-100"
+              aria-label="Previous Project"
+            >
+              <IconArrowLeft size={20} />
+            </button>
 
-            {/* Navigation Overlay */}
-            <div className="absolute bottom-6 right-6 flex gap-3 z-20">
+            <div className="relative h-[400px] w-full glass-card rounded-2xl p-4 overflow-hidden group">
+              <AnimatePresence mode='wait'>
+                {projects.map((project, index) => (
+                  isActive(index) && (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
+                      animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                      exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
+                      transition={{ duration: 0.5 }}
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={1}
+                      onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = Math.abs(offset.x) * velocity.x;
+                        const swipeConfidenceThreshold = 10000;
+                        if (swipe < -swipeConfidenceThreshold) {
+                          handleNext();
+                        } else if (swipe > swipeConfidenceThreshold) {
+                          handlePrev();
+                        }
+                      }}
+                      className="absolute inset-4 rounded-xl overflow-hidden shadow-2xl touch-pan-y cursor-grab active:cursor-grabbing"
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover transform group-hover:scale-110 transition-transform duration-700 pointer-events-none"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                    </motion.div>
+                  )
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Desktop Navigation - Right */}
+            <button
+              onClick={handleNext}
+              className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 border border-white/10 items-center justify-center text-white/50 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 opacity-0 group-hover/nav:opacity-100 focus-visible:opacity-100"
+              aria-label="Next Project"
+            >
+              <IconArrowRight size={20} />
+            </button>
+
+            {/* Mobile Navigation Controls */}
+            <div className="flex md:hidden items-center justify-center gap-6 mt-6">
               <button
                 onClick={handlePrev}
-                className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+                className="p-2 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white active:scale-95 transition-all"
+                aria-label="Previous"
               >
                 <IconArrowLeft size={18} />
               </button>
+
+              <div className="flex gap-2">
+                {projects.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive(i) ? 'w-6 bg-primary' : 'bg-white/20'}`}
+                  />
+                ))}
+              </div>
+
               <button
                 onClick={handleNext}
-                className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-95"
+                className="p-2 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white active:scale-95 transition-all"
+                aria-label="Next"
               >
                 <IconArrowRight size={18} />
               </button>
@@ -112,15 +157,15 @@ export const ProjectsSection = ({ autoplay = false }) => {
           </div>
 
           {/* Right Content */}
-          <div className="relative min-h-[300px] flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
-            <AnimatePresence mode='wait'>
+          <div className="relative h-[500px] flex items-center justify-center lg:items-center">
+            <AnimatePresence>
               <motion.div
                 key={active}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: 20, y: "-50%" }}
+                animate={{ opacity: 1, x: 0, y: "-50%" }}
+                exit={{ opacity: 0, x: -20, y: "-50%" }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6 flex flex-col items-center lg:items-start w-full"
+                className="absolute top-1/2 left-0 w-full space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left"
               >
                 <div className="flex items-center justify-center lg:justify-start gap-4 text-primary text-sm font-mono tracking-wider">
                   <span>0{active + 1}</span>
@@ -147,13 +192,13 @@ export const ProjectsSection = ({ autoplay = false }) => {
                   {projects[active].description}
                 </p>
 
-                <div className="flex justify-center lg:justify-start gap-6 pt-4">
+                <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4 w-full sm:w-auto">
                   {projects[active].demoUrl && (
                     <a
                       href={projects[active].demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-white hover:text-primary transition-colors text-lg group/link"
+                      className="cosmic-button flex items-center justify-center gap-2 group/link w-full sm:w-auto"
                     >
                       Live Demo
                       <ExternalLink size={18} className="group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
@@ -163,7 +208,7 @@ export const ProjectsSection = ({ autoplay = false }) => {
                     href={projects[active].githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-lg"
+                    className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto"
                   >
                     Source Code
                     <Github size={18} />

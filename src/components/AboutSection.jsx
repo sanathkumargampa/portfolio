@@ -1,4 +1,4 @@
-import { Briefcase, GraduationCap, Book } from "lucide-react";
+import { Briefcase, GraduationCap, Book, FileText, Download, Eye } from "lucide-react";
 
 export const AboutSection = () => {
   return (
@@ -8,9 +8,9 @@ export const AboutSection = () => {
           About <span className="text-primary text-glow">Me</span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Photo + Bio Card */}
-          <div className="lg:col-span-5 glass-card rounded-3xl p-8 flex flex-col items-center text-center transform hover:scale-[1.02] transition-transform duration-500">
+          <div className="lg:col-span-5 glass-card rounded-3xl p-8 flex flex-col items-center text-center transform hover:scale-[1.02] transition-transform duration-500 h-full justify-between">
             <div className="w-64 h-64 relative mb-8 group">
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500" />
               <img
@@ -34,21 +34,12 @@ export const AboutSection = () => {
               <a href="#contact" className="cosmic-button w-full sm:w-auto text-center">
                 Get In Touch
               </a>
-              <a
-                target="_blank"
-                href="https://drive.google.com/file/d/1jAXElISPWuLVM-vvi0djsAev_YoeLF9t/view?usp=sharing"
-                className="px-8 py-3 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium transition-all duration-300 hover:scale-105 active:scale-95 w-full sm:w-auto text-center"
-                rel="noopener noreferrer"
-              >
-                Resume
-              </a>
             </div>
           </div>
 
           {/* Educational Journey */}
           <div className="lg:col-span-7 space-y-4 md:space-y-6">
             <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3">
-
               Educational Journey
             </h3>
 
@@ -97,6 +88,43 @@ export const AboutSection = () => {
                   <span className="hidden sm:inline w-1 h-1 bg-gray-600 rounded-full" />
                   <span>GPA: 10</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Dedicate Resume Card */}
+            <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center gap-3 mt-12">
+              Resume
+            </h3>
+
+            <div className="glass-card p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 group hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-center gap-5 text-center md:text-left">
+                <div className="hidden md:flex p-4 rounded-full bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+                  <FileText size={32} />
+                </div>
+                <div>
+                  <p className="text-gray-300 text-base md:text-lg font-medium">Check out my professional background.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 w-full md:w-auto">
+                <a
+                  href="https://drive.google.com/uc?export=download&id=1jAXElISPWuLVM-vvi0djsAev_YoeLF9t"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cosmic-button flex-1 md:flex-none flex items-center justify-center gap-2"
+                >
+                  <Download size={18} />
+                  <span>Download</span>
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/1jAXElISPWuLVM-vvi0djsAev_YoeLF9t/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white font-medium hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <Eye size={18} />
+                  <span>View</span>
+                </a>
               </div>
             </div>
           </div>

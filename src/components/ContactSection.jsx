@@ -5,6 +5,7 @@ import {
   Mail,
   Phone,
   Send,
+  Instagram,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import emailjs from "@emailjs/browser";
@@ -102,6 +103,14 @@ export const ContactSection = () => {
                   className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 duration-300 transform"
                 >
                   <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.instagram.com/gampasanathkumar?igsh=MWVycmJpZWU5Ymd0NQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 duration-300 transform"
+                >
+                  <Instagram className="h-6 w-6" />
                 </a>
               </div>
             </div>
