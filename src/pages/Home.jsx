@@ -4,7 +4,6 @@ import DarkVeil from "../components/DarkVeil";
 import { HeroSection } from "../components/HeroSection";
 import { Footer } from "../components/Footer";
 import { LazyRender } from "../components/LazyRender";
-import { Analytics } from "@vercel/analytics/react"
 
 // Lazy load below-the-fold sections
 const AboutSection = lazy(() => import("../components/AboutSection").then(module => ({ default: module.AboutSection })));
