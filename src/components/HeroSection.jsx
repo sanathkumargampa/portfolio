@@ -36,7 +36,11 @@ export const HeroSection = () => {
             >
               <a
                 href="#projects"
-                className="cosmic-button w-full sm:w-auto flex items-center justify-center gap-2 group py-3 md:py-3.5 text-base"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="cosmic-button w-full sm:w-auto flex items-center justify-center gap-2 group py-3 md:py-3.5 text-base cursor-pointer"
               >
                 View My Work
                 <span className="group-hover:translate-x-1 transition-transform">→</span>

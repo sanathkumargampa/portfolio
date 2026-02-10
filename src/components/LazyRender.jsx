@@ -1,48 +1,37 @@
-import { useState, useRef, useEffect, Suspense } from 'react';
-import { SectionLoader } from './ui/SectionLoader';
+import { useState, useRef, useEffect } from 'react';
 
 export const LazyRender = ({ children, threshold = 0.1, minHeight = "min-h-[50vh]", ...props }) => {
     const [isVisible, setIsVisible] = useState(false);
-    const [hasLoaded, setHasLoaded] = useState(false);
     const ref = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
-            // Update animation state based on visibility
-            setIsVisible(entry.isIntersecting);
-
-            // Once in view, keep the content loaded (code splitting)
-            if (entry.isIntersecting && !hasLoaded) {
-                setHasLoaded(true);
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observer.unobserve(entry.target);
             }
         }, { rootMargin: '0px', threshold });
 
         if (ref.current) observer.observe(ref.current);
 
         return () => {
-            if (ref.current) observer.unobserve(ref.current);
+            if (ref.current) observer.disconnect();
         };
-    }, [threshold, hasLoaded]);
+    }, [threshold]);
 
     return (
         <div
             ref={ref}
             {...props}
+            // Keep minHeight to prevent collapse if children take time to render or for consistent spacing, 
+            // though with static imports children are there. 
+            // We can keep the prompt's instruction to keep minHeight as class or just use it. 
+            // The user plan said "Remove minHeight prop usage if no longer needed... (or keep as a class)". 
+            // I'll keep it as a class to be safe with existing spacing usage.
             className={`${minHeight} w-full transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 translate-y-0 filter blur-0" : "opacity-0 translate-y-20 filter blur-sm"
                 }`}
         >
-            {hasLoaded ? (
-                <Suspense fallback={<SectionLoader />}>
-                    {children}
-                </Suspense>
-            ) : (
-                <div className="w-full h-full" />
-            )}
+            {children}
         </div>
     );
 };
-// Note: Changed fallback to empty invisible div initially to avoid flashing loaders if user scrolls fast,
-// OR keep loader. 'SectionLoader' in Render logic only shows if we decided to load but network is slow.
-// The 'false' branch of isVisible is the "not yet in view" state.
-// I'll make the "not yet in view" state effectively transparent or a simple spacer to prevent layout shift.
-// Actually, using SectionLoader as placeholder is better for UX if they scroll fast.
